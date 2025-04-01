@@ -1,0 +1,55 @@
+def realizar_corte():
+    print("1 - Passo: Entrada de dados: comprimento da tora, quantidade de cortes e custo por metro cortado.")
+
+    L = int(input("Digite o comprimento da tora (em metros): "))
+    N = int(input("Digite a quantidade de cortes desejados: "))
+    R = float(input("Digite o custo por metro de corte: "))
+
+    cortes = []
+    cortes_possiveis = []
+    for i in range(N):
+        posicao = int(input(f"Digite a posição do corte {i + 1}: "))
+        if 0 < posicao < L:
+            cortes.append(posicao)
+        else:
+            print(f"O corte na posição {posicao} não pode ser feito, pois excede o comprimento da tora ou é inválido.")
+    
+    print("2 - Passo: Adicionando cortes nas extremidades para simplificar a lógica.")
+    cortes.append(0)
+    cortes.append(L)
+
+    print("3 - Passo: Ordenando os cortes do maior para o menor.")
+    for i in range(len(cortes)):
+        max_idx = i
+        for j in range(i + 1, len(cortes)):
+            if cortes[j] > cortes[max_idx]:
+                max_idx = j
+        cortes[i], cortes[max_idx] = cortes[max_idx], cortes[i]
+
+    print("4 - Passo: Criando a tabela de programação dinâmica para armazenar os custos mínimos.")
+    dp = [[0] * (N + 2) for _ in range(N + 2)]
+
+    for tamanho in range(2, N + 2):
+        for i in range(N + 2 - tamanho):
+            j = i + tamanho
+            custo_minimo = L * R
+            for k in range(i + 1, j):
+                custo = (cortes[j] - cortes[i]) * R + dp[i][k] + dp[k][j]
+                if custo < custo_minimo:
+                    custo_minimo = custo
+            dp[i][j] = custo_minimo
+
+    if N > 0:
+        if cortes[1] - cortes[0] > L:
+            print("Resultado: Não é possível realizar todos os cortes. Realizando os cortes possíveis.")
+            cortes_possiveis = cortes[:]
+
+            resposta = input("Deseja realizar o corte restante em outra tora? (sim/não): ")
+            if resposta.lower() == "sim":
+                print("Realizando corte em outra tora...")
+                realizar_corte() 
+            
+        else:
+            print(f"Resultado: O custo mínimo para cortar a tora nos pontos fornecidos é de R$ {dp[0][N + 1]:.2f}")
+    
+realizar_corte()

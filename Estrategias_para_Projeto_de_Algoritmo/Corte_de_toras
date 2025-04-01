@@ -1,0 +1,60 @@
+def realizar_corte():
+    print("1 - Passo: Entrada de dados: comprimento da tora, quantidade de cortes e custo por metro cortado.")
+
+    L = int(input("Digite o comprimento da tora (em metros): "))
+    N = int(input("Digite a quantidade de cortes desejados: "))
+    R = float(input("Digite o custo por metro de corte: "))
+
+    cortes = []
+    cortes_impossiveis = []
+
+    for i in range(N):
+        posicao = int(input(f"Digite a posição do corte {i + 1}: "))
+        if 0 < posicao < L:
+            cortes.append(posicao)
+        else:
+            cortes_impossiveis.append(posicao)
+            print(f"Aviso: O corte na posição {posicao} não pode ser feito, pois excede o comprimento da tora ou é inválido.")
+
+    if cortes_impossiveis:
+        resposta = input("Deseja continuar com os cortes possíveis e ignorar os cortes impossíveis? (s/n): ").strip().lower()
+        if resposta == 'n':
+            print("Operação cancelada.")
+            return
+        else:
+            print(f"Cortes impossíveis: {cortes_impossiveis}. Serão ignorados.")
+
+    if not cortes:
+        print("Não foi possível realizar nenhum corte válido.")
+        resposta = input("Você tem outra tora disponível para realizar o corte? (s/n): ").strip().lower()
+        if resposta == 's':
+            L = int(input("Digite o comprimento da nova tora (em metros): "))
+            realizar_corte()  
+            return
+        else:
+            print("Operação finalizada sem realizar nenhum corte.")
+            return
+
+    print("2 - Passo: Adicionando cortes nas extremidades para calcular corretamente os segmentos.")
+    cortes.append(0)
+    cortes.append(L)
+
+    print("3 - Passo: Ordenando os cortes do menor para o maior (Selection Sort).")
+    for i in range(len(cortes)):
+        min_idx = i
+        for j in range(i + 1, len(cortes)):
+            if cortes[j] < cortes[min_idx]:
+                min_idx = j
+        cortes[i], cortes[min_idx] = cortes[min_idx], cortes[i]
+
+    print("4 - Passo: Calculando o custo total dos cortes.")
+
+    comprimento_total = 0
+    for i in range(len(cortes) - 1):
+        comprimento_total += cortes[i + 1] - cortes[i]
+
+    custo_total = comprimento_total * R
+
+    print(f"O custo total dos cortes é de R$ {custo_total:.2f}")
+
+realizar_corte()

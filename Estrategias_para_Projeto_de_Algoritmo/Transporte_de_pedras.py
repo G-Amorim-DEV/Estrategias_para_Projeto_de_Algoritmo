@@ -10,7 +10,7 @@ def realizar_transporte():
     pedras = []
     for i in range(quantidades):
         pedras.append(inicio + i * peso_pedra)
-        print(f"Pedra {i+1}: Peso = {pedras[i]}")
+       
 
     print("3 - Passo: Ordenação das pedras em ordem decrescente de peso.")
     for i in range(len(pedras) - 1):
@@ -19,7 +19,7 @@ def realizar_transporte():
             if pedras[j] > pedras[max_idx]:
                 max_idx = j
         pedras[i], pedras[max_idx] = pedras[max_idx], pedras[i]
-        print(f"Após troca {i+1}: {pedras}")
+       
 
     print("4 - Passo: Distribuição das pedras em viagens com base no limite de peso do caminhão, realizando a soma do peso das pedras transportadas em cada viagem.")
     deslocamentos = 0
@@ -35,14 +35,14 @@ def realizar_transporte():
                 carga_atual += pedras[i]
                 pedras_na_viagem.append(pedras[i])
                 pedras.pop(i)
-                print(f"Adicionada pedra de peso {pedras[i]} à viagem. Carga atual: {carga_atual}")
+            
             else:
                 i += 1
 
         if len(pedras_na_viagem) > 0:
             viagens.append(pedras_na_viagem)
             deslocamentos += 1
-            print(f"Viagem {deslocamentos}: Pedras transportadas - {pedras_na_viagem} (Peso total: {carga_atual})")
+           
 
     print("5 - Passo: Exibição dos resultados: quantidade de viagens e detalhes sobre as pedras transportadas.")
     for i in range(len(viagens)):

@@ -13,89 +13,62 @@ Corte de toras:Considere uma tora de madeira de comprimento L (m), a qual deseja
 
 A solução para este problema deve ser implementada com a estratégia de programação dinâmica.
 
-1. Transporte de Pedras (Estratégia Gulosa)
-Descrição
-Este código simula o transporte de pedras por um caminhão, utilizando a estratégia gulosa para minimizar o número de viagens necessárias. O programa organiza as pedras em viagens respeitando o limite de carga do caminhão.
+Projeto: Corte de Toras e Transporte de Pedras
+Este repositório contém diversos scripts que simulam o processo de corte de toras e transporte de pedras, com implementação em várias linguagens de programação (Python, Java, e Tkinter). Cada script possui uma funcionalidade específica, seja para calcular o custo dos cortes ou organizar o transporte das pedras de acordo com limitações de peso.
 
-Objetivo
-Minimizar a quantidade de viagens necessárias, utilizando a estratégia gulosa.
+Estrutura do Repositório
 
-Como Funciona:
-Entrada de Dados: O programa solicita o peso da pedra mais leve, a quantidade total de pedras, o peso máximo que o caminhão pode carregar, e a diferença de peso entre as pedras.
+1. Corte_de_toras.py
+Este script em Python realiza os seguintes passos:
 
-Construção da Lista de Pedras: A partir dos dados fornecidos, o programa gera uma lista de pedras com pesos crescentes.
+Entrada de dados: Solicita ao usuário o comprimento da tora, a quantidade de cortes e o custo por metro cortado.
 
-Ordenação das Pedras: As pedras são ordenadas de forma decrescente, para garantir que as mais pesadas sejam carregadas primeiro.
+Validação de cortes: Os cortes inválidos são verificados e descartados.
 
-Distribuição nas Viagens: O programa distribui as pedras no caminhão respeitando o limite de peso, organizando as pedras de forma a minimizar o número de viagens.
+Ordenação dos cortes: Utiliza o algoritmo de ordenação Insertion Sort para organizar os cortes do maior para o menor.
 
-Exibição dos Resultados: O programa exibe o número total de viagens e os detalhes de cada viagem.
+Cálculo do custo: Calcula o custo total dos cortes e garante que o valor mínimo do custo seja de 50.
 
-Conclusão
-Este código utiliza conceitos como laços de repetição, manipulação de listas, ordenação e verificação de condições. Ele otimiza a carga de um caminhão para minimizar o número de viagens necessárias, utilizando a estratégia gulosa.
+Exibição do resultado final: Mostra o custo total dos cortes.
 
-2. Corte de Toras (Programação Dinâmica)
-Descrição
-Este código resolve o problema de cortar uma tora de madeira de comprimento L metros em posições específicas com o menor custo possível. Ele utiliza programação dinâmica para encontrar a sequência de cortes mais econômica.
+2. Corte_de_toras_tkinter.py
+Uma versão do script Corte_de_toras.py, mas com interface gráfica utilizando Tkinter. Este script segue os mesmos passos do script anterior, mas com a interface visual para entrada de dados e exibição dos resultados.
 
-Objetivo
-Determinar o custo total mínimo para realizar os N cortes em uma tora de madeira, utilizando programação dinâmica.
+3. Transporte_de_Pedras.java
+Este script em Java simula o transporte de pedras, seguindo os seguintes passos:
 
-Como Funciona:
-Entrada de Dados: O usuário fornece o comprimento da tora, a quantidade de cortes desejados, e o custo por metro cortado.
+Entrada de dados: Solicita o peso da pedra mais leve, a quantidade de pedras, o limite de peso do caminhão e a diferença de peso entre as pedras.
 
-Adicionando Cortes nas Extremidades: O código adiciona as posições 0 e L na lista de cortes, representando as extremidades da tora.
+Construção da lista de pedras: Gera a lista de pedras com base nos dados fornecidos.
 
-Ordenação dos Cortes: A lista de cortes é ordenada utilizando o algoritmo Selection Sort.
+Ordenação das pedras: Ordena as pedras de forma decrescente de peso.
 
-Programação Dinâmica: O programa preenche uma tabela de programação dinâmica, onde cada célula dp[i][j] representa o custo mínimo para cortar entre as posições i e j.
+Distribuição das pedras nas viagens: As pedras são distribuídas nas viagens de acordo com o limite de peso do caminhão.
 
-Cálculo do Custo Mínimo: A fórmula recursiva é aplicada para calcular o custo mínimo de corte entre cada par de cortes.
+Exibição dos resultados: Exibe a quantidade de viagens necessárias e os detalhes sobre as pedras transportadas.
 
-Conclusão
-Este código aplica conceitos fundamentais de programação dinâmica, como a criação de uma tabela de DP e a busca de uma solução ótima para o problema do corte de toras.
+4. Transporte_de_Pedras_JOptionPane.java
+Uma versão do Transporte_de_Pedras.java que utiliza o JOptionPane para interação com o usuário, exibindo mensagens de entrada de dados e resultados de forma mais amigável.
 
-3. Transporte de Pedras com Tkinter
-Descrição
-Este código simula o transporte de pedras utilizando a biblioteca Tkinter para interagir com o usuário através de uma interface gráfica. Ele segue os mesmos princípios da estratégia gulosa, mas com uma interface mais amigável.
+5. Transporte_de_pedras.py
+Este script em Python simula o transporte de pedras, seguindo os seguintes passos:
 
-Objetivo
-Simular o transporte de pedras com uma interface gráfica e minimizar o número de viagens necessárias.
+Entrada de dados: Solicita o peso da pedra mais leve, a quantidade de pedras, o limite de peso do caminhão e a diferença de peso entre as pedras.
 
-Como Funciona:
-Entrada de Dados: O usuário insere os dados através de caixas de diálogo do Tkinter, como o peso da pedra mais leve, a quantidade total de pedras, o peso máximo do caminhão e a diferença de peso entre as pedras.
+Construção da lista de pedras: Gera a lista de pedras com base nos dados fornecidos.
 
-Construção da Lista de Pedras: A lista de pedras é gerada a partir dos dados fornecidos.
+Ordenação das pedras: Ordena as pedras de forma decrescente de peso.
 
-Ordenação das Pedras: As pedras são ordenadas em ordem decrescente de peso.
+Distribuição das pedras nas viagens: As pedras são distribuídas nas viagens de acordo com o limite de peso do caminhão.
 
-Distribuição nas Viagens: O código distribui as pedras nas viagens respeitando o limite de peso do caminhão.
+Exibição dos resultados: Exibe a quantidade de viagens necessárias e os detalhes sobre as pedras transportadas.
 
-Exibição dos Resultados: O número total de viagens e as pedras transportadas em cada viagem são exibidos em caixas de mensagem do Tkinter.
+6. Transporte_de_pedras_tkinter.py
+Versão do script Transporte_de_pedras.py com interface gráfica utilizando Tkinter. A lógica permanece a mesma, mas agora o script permite ao usuário interagir por meio de uma janela gráfica.
 
-Conclusão
-Este código utiliza Tkinter para criar uma interface gráfica interativa, tornando a experiência do usuário mais intuitiva. A lógica de transporte de pedras segue a estratégia gulosa, mas com a vantagem de ser mais acessível.
+Funcionalidades
+Algoritmos de Ordenação: Os scripts utilizam o algoritmo de Insertion Sort para ordenar os cortes ou pedras.
 
-4. Corte de Toras com Tkinter
-Descrição
-Este código resolve o problema de corte de toras de madeira com a ajuda da programação dinâmica, apresentando os resultados através de uma interface gráfica utilizando o Tkinter.
+Entrada de Dados: Os usuários fornecem dados como peso, quantidade e limites através de entradas no console ou na interface gráfica (Tkinter ou JOptionPane).
 
-Objetivo
-Calcular o custo mínimo para realizar os cortes em uma tora de madeira, com interface gráfica para facilitar a interação do usuário.
-
-Como Funciona:
-Entrada de Dados: Através de caixas de diálogo, o usuário insere o comprimento da tora, o número de cortes e o custo por metro cortado.
-
-Adicionando Cortes nas Extremidades: As posições 0 e L são adicionadas à lista de cortes.
-
-Ordenação dos Cortes: A lista de cortes é ordenada em ordem crescente usando o algoritmo Selection Sort.
-
-Programação Dinâmica: Uma tabela de programação dinâmica é preenchida para calcular o custo mínimo para realizar os cortes entre as posições selecionadas.
-
-Exibição do Resultado: O programa exibe o custo mínimo dos cortes, informando o usuário sobre os detalhes do processo.
-
-Conclusão
-Este código aplica a programação dinâmica para otimização do custo de cortes e utiliza Tkinter para proporcionar uma experiência de usuário interativa e amigável. Ele permite visualizar de forma clara os resultados e interagir facilmente com a aplicação.
-
-Conclusão Geral
-Os códigos apresentados utilizam conceitos de otimização (estratégia gulosa e programação dinâmica) para resolver problemas práticos de transporte e corte de materiais. O uso da biblioteca Tkinter nos dois últimos códigos torna as aplicações mais acessíveis e fáceis de usar. Cada solução implementada foi projetada para ser eficiente e apresentar os resultados de maneira clara, garantindo uma experiência de usuário mais intuitiva.
+Exibição de Resultados: Os resultados, como custo dos cortes ou quantidade de viagens, são exibidos diretamente na interface ou no console.
